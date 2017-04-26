@@ -23,30 +23,30 @@ import java.io.File;
 /**
  * Created by Andy on 22.04.2017.
  */
-public class LoginAdmin {
+public class LoginAdmin extends TestBase {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+//    private WebDriver driver;
+//    private WebDriverWait wait;
 
-    @Before
-    public void start(){
-        //chrome
-        DesiredCapabilities cap = new DesiredCapabilities();
-        cap.setCapability("unexpectedAlertBehaviour", "dismiss");
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("start-maximized");
-        cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-        //driver = new ChromeDriver(cap);
-        FirefoxOptions firefoxOptions = new FirefoxOptions().setLegacy(false);
-        firefoxOptions.setBinary(new FirefoxBinary(new File("C:\\Program Files\\Nightly\\firefox.exe")));
-        driver = new FirefoxDriver(firefoxOptions);
-        // driver = new InternetExplorerDriver();
-        // System.out.print(((HasCapabilities) driver).getCapabilities());
-        wait = new WebDriverWait(driver, 10);
-
-
-
-    }
+//    @Before
+//    public void start(){
+//        //chrome
+//        DesiredCapabilities cap = new DesiredCapabilities();
+//        cap.setCapability("unexpectedAlertBehaviour", "dismiss");
+//        ChromeOptions chromeOptions = new ChromeOptions();
+//        chromeOptions.addArguments("start-maximized");
+//        cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+//        //driver = new ChromeDriver(cap);
+//        FirefoxOptions firefoxOptions = new FirefoxOptions().setLegacy(false);
+//        firefoxOptions.setBinary(new FirefoxBinary(new File("C:\\Program Files\\Nightly\\firefox.exe")));
+//        driver = new FirefoxDriver(firefoxOptions);
+//        // driver = new InternetExplorerDriver();
+//        // System.out.print(((HasCapabilities) driver).getCapabilities());
+//        wait = new WebDriverWait(driver, 10);
+//
+//
+//
+//    }
 
 
 
@@ -58,19 +58,10 @@ public class LoginAdmin {
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("admin");
         driver.findElement(By.cssSelector("button[name=\"login\"]")).click();
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.name"))); //instead of thread sleep
-        //Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.name"))); //instead of thread sleep
+      //  Thread.sleep(2000);
         driver.findElement(By.linkText("ACME Corp."));
     }
 
-    @After
-    public void stop(){
-        try {
-            driver.quit();
-        }
-        catch (Exception e){
-            //do nothing
-        }
-    }
 
 }
