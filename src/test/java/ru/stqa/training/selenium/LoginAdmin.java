@@ -60,8 +60,12 @@ public class LoginAdmin extends TestBase {
         driver.findElement(By.name("password")).sendKeys("admin");
         driver.findElement(By.cssSelector("button.btn.btn-default")).click();
        // wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.name")));
-        System.out.print(driver.findElements(By.cssSelector("#box-apps-menu-wrapper li")).size());
+        System.out.println("number of main menu entries " + driver.findElements(By.cssSelector("#box-apps-menu-wrapper li")).size());
+        System.out.println("number of main menu entries " + driver.findElements(By.cssSelector("span.name")).size()); //just another way
         driver.findElement(By.linkText("Appearance")).click();
+      System.out.println(driver.findElement(By.cssSelector("span.name")).getText());
+         driver.findElement(By.linkText("Template")).click();
+         driver.findElement(By.linkText("Logotype")).click();
         driver.findElement(By.linkText("Catalog")).click();
         driver.findElement(By.linkText("Currencies")).click();
         driver.findElement(By.linkText("Customers")).click();
