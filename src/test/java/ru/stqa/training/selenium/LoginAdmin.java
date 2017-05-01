@@ -19,6 +19,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.time.LocalDateTime;
 
 /**
  * Created by Andy on 22.04.2017.
@@ -57,10 +58,28 @@ public class LoginAdmin extends TestBase {
         driver.get("http://localhost/litecart/admin");
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("admin");
-        driver.findElement(By.cssSelector("button[name=\"login\"]")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.name"))); //instead of thread sleep
-      //  Thread.sleep(2000);
-        driver.findElement(By.linkText("ACME Corp."));
+        driver.findElement(By.cssSelector("button.btn.btn-default")).click();
+       // wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.name")));
+        System.out.print(driver.findElements(By.cssSelector("#box-apps-menu-wrapper li")).size());
+        driver.findElement(By.linkText("Appearance")).click();
+        driver.findElement(By.linkText("Catalog")).click();
+        driver.findElement(By.linkText("Currencies")).click();
+        driver.findElement(By.linkText("Customers")).click();
+        driver.findElement(By.linkText("Geo Zones")).click();
+        driver.findElement(By.linkText("Languages")).click();
+        driver.findElement(By.linkText("Modules")).click();
+        driver.findElement(By.linkText("Orders")).click();
+        driver.findElement(By.linkText("Pages")).click();
+        driver.findElement(By.linkText("Reports")).click();
+        driver.findElement(By.linkText("Settings")).click();
+        driver.findElement(By.linkText("Slides")).click();
+        driver.findElement(By.linkText("Slides")).click();
+        driver.findElement(By.linkText("Tax")).click();
+        driver.findElement(By.linkText("Translations")).click();
+        driver.findElement(By.linkText("Users")).click();
+        driver.findElement(By.linkText("vQmods")).click();
+
+
     }
 
 
