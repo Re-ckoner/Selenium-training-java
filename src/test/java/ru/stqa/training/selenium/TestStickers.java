@@ -2,7 +2,6 @@ package ru.stqa.training.selenium;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -13,12 +12,16 @@ import java.util.List;
 public class TestStickers extends TestBase {
 
     @Test
-    public void stickersTest()  {
+    public void stickersTest() throws InterruptedException
+    {
         driver.get("http://localhost/litecart");
-       // driver.findElement(By.cssSelector("li.category-1")).click();
-        driver.findElement(By.xpath(""));
-
-
+        //driver.get("http://localhost/lightcart/public_html");
+        List<WebElement> goods =  driver.findElements(By.xpath("//div[@class='image-wrapper']"));
+        System.out.println("images number = "+goods.size());
+        goods.get(10).findElement(By.xpath("//div[contains(@class,'sticker')]"));
+        for (WebElement e :goods){
+            assert(e.findElements(By.xpath(".//div[contains(@class,'sticker')]")).size()==1);
+        }
     }
 
 }
