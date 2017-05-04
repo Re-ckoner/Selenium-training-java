@@ -18,7 +18,6 @@ public class TestStickers extends TestBase {
         //driver.get("http://localhost/lightcart/public_html");
         List<WebElement> goods =  driver.findElements(By.xpath("//div[@class='image-wrapper']"));
         System.out.println("images number = "+goods.size());
-        goods.get(10).findElement(By.xpath("//div[contains(@class,'sticker')]"));
         for (WebElement e :goods){
             assert(e.findElements(By.xpath(".//div[contains(@class,'sticker')]")).size()==1);
         }
