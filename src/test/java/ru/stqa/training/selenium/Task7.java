@@ -12,10 +12,11 @@ import java.util.List;
  * Created by amil on 5/3/2017.
  */
 public class Task7 extends TestBase{
-
+    int count = 0;
     @Test
     public void testAdminMenu() throws InterruptedException
     {
+
         //driver.get("http://localhost/litecart/admin")
         driver.get("http://localhost/lightcart/public_html/admin");
         logIn();
@@ -29,6 +30,7 @@ public class Task7 extends TestBase{
                 driver.findElement(By.linkText(s)).click();
                 List<WebElement> subMenu = driver.findElements(By.cssSelector("ul.docs span.name"));
                 ArrayList<String> subItems = new ArrayList<String>();
+               assert (isHeaderPresent(driver));
                // System.out.println(subMenu.size());
             for (WebElement we:subMenu){
                 subItems.add(we.getText());
@@ -40,13 +42,16 @@ public class Task7 extends TestBase{
                 
                 
             }
-
+    System.out.print("headers "+count);
 
     }
 
     public boolean isHeaderPresent(WebDriver d)
     {
         List<WebElement> list= d.findElements(By.cssSelector("h1"));
+        count++;
         return list.size()>0;
+
+
     }
 }
