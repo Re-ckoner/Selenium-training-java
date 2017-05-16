@@ -29,7 +29,8 @@ public class Task10 extends TestBase{
 
         String font = driver.findElement(By.cssSelector("#box-campaigns > div > div > div > a .price-wrapper s")).getCssValue("text-decoration");
         assert(font.contains("line-through"));
-       
+        String fontA = driver.findElement(By.cssSelector("#box-campaigns > div > div > div > a .price-wrapper strong")).getCssValue("font-weight");
+        assert(fontA.contains("bold"));
 
 
         // assert (parseColor(grey)[1]==parseColor(grey)[2]);
