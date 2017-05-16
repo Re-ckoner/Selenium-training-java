@@ -25,14 +25,14 @@ public class Task10 extends TestBase{
         //System.out.println(map.get("name"));
         String grey = driver.findElement(By.cssSelector("#box-campaigns > div > div > div > a .price-wrapper s")).getCssValue("color");
         String red = driver.findElement(By.cssSelector("#box-campaigns > div > div > div > a .price-wrapper strong")).getCssValue("color");
-        System.out.print(grey);
+        //System.out.print(grey);
         assert((parseColor(grey)[0].equals(parseColor(grey)[1]))&&parseColor(grey)[0].equals(parseColor(grey)[2]));
         assert((parseColor(red)[1].equals("0"))&&(parseColor(red)[2].equals("0")));
 
         String font = driver.findElement(By.cssSelector("#box-campaigns > div > div > div > a .price-wrapper s")).getCssValue("text-decoration");
         assert(font.contains("line-through"));
         String fontA = driver.findElement(By.cssSelector("#box-campaigns > div > div > div > a .price-wrapper strong")).getCssValue("font-weight");
-        assert(fontA.contains("bold"));
+        assert((fontA.contains("bold"))||(fontA.contains("700")));
         String fontSize = driver.findElement(By.cssSelector("#box-campaigns > div > div > div > a .price-wrapper s")).getCssValue("font-size");
         String fontSizeA = driver.findElement(By.cssSelector("#box-campaigns > div > div > div > a .price-wrapper strong")).getCssValue("font-size");
         assert(fontSizeA.compareTo(fontSize)>0);
@@ -54,7 +54,7 @@ public class Task10 extends TestBase{
         font = driver.findElement(By.cssSelector(".regular-price")).getCssValue("text-decoration");
         assert(font.contains("line-through"));
         fontA = driver.findElement(By.cssSelector(".campaign-price")).getCssValue("font-weight");
-        assert(fontA.contains("bold"));
+        assert((fontA.contains("bold"))||(fontA.contains("700")));
 
         fontSize = driver.findElement(By.cssSelector(".regular-price")).getCssValue("font-size");
         fontSizeA = driver.findElement(By.cssSelector(".campaign-price")).getCssValue("font-size");
@@ -66,6 +66,10 @@ public class Task10 extends TestBase{
 
     public String[] parseColor(String input)
     {
-        return input.substring(5, input.length() - 1 ).split(", ");
+        String str = input.replaceAll("[a-z]", "");
+        //System.out.println(str);
+        String res[] = str.substring(1,str.length() - 1 ).split(", ");
+
+        return res;
     }
 }
