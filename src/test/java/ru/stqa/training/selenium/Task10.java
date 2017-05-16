@@ -28,7 +28,8 @@ public class Task10 extends TestBase{
         assert((parseColor(red)[1].equals("0"))&&(parseColor(red)[2].equals("0")));
 
         String font = driver.findElement(By.cssSelector("#box-campaigns > div > div > div > a .price-wrapper s")).getCssValue("text-decoration");
-        System.out.print("font "+font);
+        assert(font.contains("line-through"));
+       
 
 
         // assert (parseColor(grey)[1]==parseColor(grey)[2]);
