@@ -2,6 +2,8 @@ package ru.stqa.training.selenium;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.Random;
 
@@ -13,7 +15,8 @@ public class Task12 extends TestBase{
     @Test
     public void addGoods() throws InterruptedException
     {
-        driver.get("http://localhost/lightcart/public_html/admin");
+        //driver.get("http://localhost/lightcart/public_html/admin");
+        driver.get("http://localhost/litecart/admin");
         logIn();
         driver.findElement(By.linkText("Catalog")).click();
         driver.findElement(By.cssSelector("#main > ul > li:nth-child(3) > a")).click();
@@ -30,8 +33,12 @@ public class Task12 extends TestBase{
         driver.findElement(By.cssSelector(".form-group .form-control[name=dim_z]")).sendKeys("30");
         driver.findElement(By.cssSelector(".form-group .form-control[name=date_valid_from]")).sendKeys("01012010");
         driver.findElement(By.cssSelector(".form-group .form-control[name=date_valid_to]")).sendKeys("01012020");
-        driver.findElement(By.cssSelector("#tab-general  div  div:nth-child(1)  div:nth-child(4) .checkbox:nth-child(4) input")).clear();
-        driver.findElement(By.cssSelector("#tab-general  div  div:nth-child(1)  div:nth-child(4) .checkbox:nth-child(4) input")).click();
+        driver.findElement(By.cssSelector(".col-md-4:nth-of-type(1) .form-group:nth-of-type(4) .checkbox:nth-of-type(3) input")).click();
+        Select delivery = new Select(driver.findElement(By.cssSelector(".col-md-4:nth-of-type(2) .form-group:nth-of-type(7) select")));
+        delivery .selectByIndex(1);
+        Select sold = new Select(driver.findElement(By.cssSelector(".col-md-4:nth-of-type(2) .form-group:nth-of-type(8) select")));
+        sold.selectByIndex(2);
+        driver.findElement(By.cssSelector(".col-md-4:nth-of-type(3) .form-control")).sendKeys("C:\\Users\\Andy\\Downloads\\dBDlTaoxHUc.jpg"); //change!
 
 
 
