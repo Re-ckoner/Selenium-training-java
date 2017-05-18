@@ -2,9 +2,10 @@ package ru.stqa.training.selenium;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -13,21 +14,21 @@ import java.util.Random;
 public class Task12 extends TestBase{
 
     @Test
-    public void addGoods() throws InterruptedException
+    public void addGoods() throws InterruptedException, IOException
     {
-        //driver.get("http://localhost/lightcart/public_html/admin");
-        driver.get("http://localhost/litecart/admin");
+        driver.get("http://localhost/lightcart/public_html/admin");
+        //driver.get("http://localhost/litecart/admin");
         logIn();
         driver.findElement(By.linkText("Catalog")).click();
         driver.findElement(By.cssSelector("#main > ul > li:nth-child(3) > a")).click();
         driver.findElement(By.cssSelector(".form-group .form-control[name=code]")).sendKeys("12345");
-        driver.findElement(By.cssSelector(".form-group .form-control[name*=name]")).sendKeys("Stuff");
+        driver.findElement(By.cssSelector(".form-group .form-control[name*=name]")).sendKeys("Suicide duck");
         driver.findElement(By.cssSelector(".form-group .form-control[name=sku]")).sendKeys("sku");
         driver.findElement(By.cssSelector(".form-group .form-control[name=gtin]")).sendKeys("gtin");
         driver.findElement(By.cssSelector(".form-group .form-control[name=taric]")).sendKeys("taric");
         driver.findElement(By.cssSelector(".form-group .form-control[name=quantity]")).sendKeys("77");
         driver.findElement(By.cssSelector(".form-group .form-control[name=quantity]")).sendKeys("77");
-        driver.findElement(By.cssSelector(".form-group .form-control[name=weight]")).sendKeys("700");
+        driver.findElement(By.cssSelector(".form-group .form-control[name=weight]")).sendKeys("100");
         driver.findElement(By.cssSelector(".form-group .form-control[name=dim_x]")).sendKeys("10");
         driver.findElement(By.cssSelector(".form-group .form-control[name=dim_y]")).sendKeys("20");
         driver.findElement(By.cssSelector(".form-group .form-control[name=dim_z]")).sendKeys("30");
@@ -38,7 +39,15 @@ public class Task12 extends TestBase{
         delivery .selectByIndex(1);
         Select sold = new Select(driver.findElement(By.cssSelector(".col-md-4:nth-of-type(2) .form-group:nth-of-type(8) select")));
         sold.selectByIndex(2);
-        driver.findElement(By.cssSelector(".col-md-4:nth-of-type(3) .form-control")).sendKeys("C:\\Users\\Andy\\Downloads\\dBDlTaoxHUc.jpg"); //change!
+        File pic = new File("src\\electroduck.jpg");
+        driver.findElement(By.cssSelector(".col-md-4:nth-of-type(3) .form-control")).sendKeys(pic.getCanonicalPath());
+
+        //info tab
+        driver.findElement(By.cssSelector("#main form div ul li a[href*=info]")).click();
+
+
+
+        driver.findElement(By.cssSelector("#main > form > p > button:nth-child(1)")).click();
 
 
 
